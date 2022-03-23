@@ -18,4 +18,4 @@ const blog = new mongoose.Schema({
     },
 });
 
-module.exports = mongoose.model("blog",blog);
+module.exports = mongoose.model("BLOG",blog);
