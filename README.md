@@ -1,6 +1,14 @@
 # 
 SE project
 <h1 align="center">IT632_11_Online_herbs_shopping</h1>
+<h3>All Heal</h3>
+<p>The “ALL HEAL“ | Online Herbs & Fruits Selling Store | has been developed to overcome the issues existing 
+in practicing manual system. This webapp will be supportive to reduce or even overcome hardships faced by 
+the user following existing systems. Also, the system is designed to carry out certain operations in an effective 
+manner.
+The application is proved to be user friendly as no formal knowledge is required to use it and by various 
+means it also provides error messages if the user mistakenly enters invalid data. Thus, leading it towards 
+error free and reliable way of fast management.</p>
 
 - <h2 align="left">Team members :</h2>
 <h4 align="left"> 202112006 - SARTHAK MEHRA </h4>
