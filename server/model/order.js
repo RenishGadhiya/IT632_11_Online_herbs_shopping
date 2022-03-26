@@ -4,10 +4,6 @@ const mongoose = require("mongoose");
 const { double, boolean } = require("webidl-conversions");
 
 const orderSchema = new mongoose.Schema({
-order_ID: {
-    type: String,
-    required: true,
-  },
 
   order_detail: [{
     type : {
