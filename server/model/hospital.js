@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-
+const jwt = require("jsonwebtoken");
 const hospitalSchema = new mongoose.Schema({
  
   hospital_name: {
@@ -61,10 +61,28 @@ const hospitalSchema = new mongoose.Schema({
     required: true,
   },
 
-  hospital_DOR: {
+  hospital_dor: {
     type: Date,
     required: true,
   },
+  tokens: [
+    {
+      token: {
+        type: String,
+      },
+    },
+  ],
 });
+
+hospitalSchema.methods.generateAuthToken = async function () {
+  try {
+    let myToken = jwt.sign({ _id: this._id }, process.env.SECRET_KEY);
+    this.tokens = this.tokens.concat({ token: myToken });
+    await this.save();
+    return myToken;
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 module.exports = mongoose.model("HOSPITAL", hospitalSchema);
