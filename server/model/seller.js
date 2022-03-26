@@ -1,10 +1,6 @@
 const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
 const sellerSchema = new mongoose.Schema({
-  seller_id: {
-    type: String,
-    required: true,
-  },
   seller_name: {
     type: String,
     required: true,
