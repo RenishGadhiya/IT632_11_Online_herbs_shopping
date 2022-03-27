@@ -42,12 +42,11 @@ const sellerSchema = new mongoose.Schema({
   },
   seller_status: {
     type: Number,
-    required: true,
     default: 0,
   },
   seller_dor: {
     type: Date,
-    required: true,
+    default: Date.now(),
   },
   tokens: [
     {

@@ -57,7 +57,7 @@ const product = new mongoose.Schema({
   },
   product_dor: {
     type: Date,
-    required: true,
+    default: Date.now(),
   },
 });
 

@@ -4,7 +4,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 require("../db/connection");
 const Seller = require("../model/seller");
-const Hospital= require("../model/hospital");
+const Hospital = require("../model/hospital");
 const Buyer = require("../model/buyer");
 const Product = require("../model/product");
 
@@ -74,8 +74,6 @@ router.post("/sellerregister", async (req, res) => {
       return res.status(400).json({ error: "Seller already exist" });
     }
 
-    const seller_dor = new Date();
-
     const newSeller = new Seller({
       seller_name,
       seller_password,
@@ -87,7 +85,6 @@ router.post("/sellerregister", async (req, res) => {
       seller_phone_no,
       seller_email,
       seller_image,
-      seller_dor,
     });
 
     newSeller.seller_password = await bcrypt.hash(
@@ -161,24 +158,22 @@ router.post("/hospitalregister", async (req, res) => {
     !hospital_state ||
     !hospital_license_no ||
     !hospital_pincode ||
-    !hospital_disease_tag ){
-      return res
-        .status(422)
-        .json({ err: "Please Enter in All the required field" });
-    }
-    
-    
-    try{
-  
-    const hospitalExist = await Hospital.findOne({ hospital_email: hospital_email });
+    !hospital_disease_tag
+  ) {
+    return res
+      .status(422)
+      .json({ err: "Please Enter in All the required field" });
+  }
+
+  try {
+    const hospitalExist = await Hospital.findOne({
+      hospital_email: hospital_email,
+    });
 
     if (hospitalExist) {
       console.log(hospital_email);
       return res.status(400).json({ error: "Hospital already exist" });
     }
-
-    const hospital_dor = new Date();
-    const hospital_status = 0;
 
     const newHospital = new Hospital({
       hospital_name,
@@ -191,9 +186,7 @@ router.post("/hospitalregister", async (req, res) => {
       hospital_license_no,
       hospital_pincode,
       hospital_disease_tag,
-      hospital_status,
       hospital_image,
-      hospital_dor,
     });
     newHospital.hospital_password = await bcrypt.hash(
       newHospital.hospital_password,
@@ -207,8 +200,7 @@ router.post("/hospitalregister", async (req, res) => {
   }
 });
 
-
-    //to register the buyer in the website
+//to register the buyer in the website
 router.post("/buyerregister", async (req, res) => {
   const {
     buyer_name,
@@ -236,15 +228,12 @@ router.post("/buyerregister", async (req, res) => {
       .json({ err: "Please Enter in All the required field" });
   }
   try {
-
     const buyerExist = await Buyer.findOne({ buyer_email: buyer_email });
 
     if (buyerExist) {
       console.log(buyer_email);
       return res.status(400).json({ error: "Buyer already exist" });
     }
-
-    const buyer_dor = new Date();
 
     const newBuyer = new Buyer({
       buyer_name,
@@ -256,14 +245,12 @@ router.post("/buyerregister", async (req, res) => {
       buyer_email,
       buyer_contact,
       buyer_image,
-      buyer_dor,
     });
 
     newBuyer.buyer_password = await bcrypt.hash(newBuyer.buyer_password, 12);
     await newBuyer.save();
     console.log("Buyer registreted succesusfully");
     res.status(200).json({ messgae: "Buyer registreted successufully" });
-
   } catch (err) {
     console.log(err);
   }
@@ -276,7 +263,9 @@ router.post("/hospitallogin", async (req, res) => {
     if (!hospital_email || !hospital_password) {
       return res.status(400).json({ Error: "Please Fill all required filled" });
     }
-    const hospitallogin = await Hospital.findOne({ hospital_email: hospital_email });
+    const hospitallogin = await Hospital.findOne({
+      hospital_email: hospital_email,
+    });
     if (hospitallogin) {
       const validPassword = await bcrypt.compare(
         hospital_password,
@@ -300,7 +289,7 @@ router.post("/hospitallogin", async (req, res) => {
   }
 });
 
- // to login the buyer to the website
+// to login the buyer to the website
 router.post("/buyerlogin", async (req, res) => {
   try {
     const { buyer_email, buyer_password } = req.body;
@@ -364,7 +353,7 @@ router.post("/addproduct", async (req, res) => {
       .json({ err: "Please Enter in All the required field" });
   }
   try {
-    const product_dor = new Date();
+    // sellerid, category id, brand id ko dalana hai yaha......
     const product_seller_id = "126513";
     const product_category_id = product_category;
     const product_brand_id = product_brand;
@@ -376,7 +365,6 @@ router.post("/addproduct", async (req, res) => {
       disease2,
       disease3,
     };
-    const product_status = 0;
     const newProduct = new Product({
       product_name,
       product_discription,
@@ -388,8 +376,6 @@ router.post("/addproduct", async (req, res) => {
       product_stock,
       product_disease_name, //multiple value
       product_image,
-      product_status,
-      product_dor,
     });
 
     await newProduct.save();

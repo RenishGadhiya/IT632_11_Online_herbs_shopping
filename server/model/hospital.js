@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
 const hospitalSchema = new mongoose.Schema({
- 
   hospital_name: {
     type: String,
     required: true,
@@ -57,13 +56,13 @@ const hospitalSchema = new mongoose.Schema({
   },
 
   hospital_status: {
-    type: String,
-    required: true,
+    type: Number,
+    default: 0,
   },
 
   hospital_dor: {
     type: Date,
-    required: true,
+    default: Date.now(),
   },
   tokens: [
     {
