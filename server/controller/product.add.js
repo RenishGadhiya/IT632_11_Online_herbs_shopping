@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 exports.addProduct = async (req, res) => {
   const {
     product_name,
-    product_discription,
+    product_description,
     product_price,
     product_discount,
     product_category,
@@ -18,7 +18,7 @@ exports.addProduct = async (req, res) => {
   } = req.body;
   if (
     !product_name ||
-    !product_discription ||
+    !product_description ||
     !product_price ||
     !product_discount ||
     !product_category ||
@@ -46,7 +46,7 @@ exports.addProduct = async (req, res) => {
     };
     const newProduct = new Product({
       product_name,
-      product_discription,
+      product_description,
       product_price,
       product_discount,
       product_seller_id,
