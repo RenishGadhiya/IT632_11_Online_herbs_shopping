@@ -53,7 +53,7 @@ const product = new mongoose.Schema({
   },
   product_status: {
     type: Number,
-    required: true,
+    default: 0,
   },
   product_dor: {
     type: Date,
