@@ -7,11 +7,11 @@ const brand = new mongoose.Schema({
   },
   brand_dor: {
     type: Date,
-    required: true,
+    default: Date.now(),
   },
   brand_status: {
     type: Number, // 0 : unverified	1 : verified	-1 : block
-    required: true,
+    default: 0,
   },
 });
 

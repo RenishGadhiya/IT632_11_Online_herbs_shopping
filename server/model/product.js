@@ -4,7 +4,7 @@ const product = new mongoose.Schema({
     type: String,
     required: true,
   },
-  product_discription: {
+  product_description: {
     type: String,
     required: true,
   },
@@ -53,11 +53,11 @@ const product = new mongoose.Schema({
   },
   product_status: {
     type: Number,
-    required: true,
+    default: 0,
   },
   product_dor: {
     type: Date,
-    required: true,
+    default: Date.now(),
   },
 });
 

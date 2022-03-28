@@ -40,7 +40,7 @@ const buyerSchema = new mongoose.Schema({
   },
   buyer_dor: {
     type: Date,
-    required: true,
+    default: Date.now(),
   },
   tokens: [
     {
