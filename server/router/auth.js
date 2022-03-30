@@ -6,6 +6,7 @@ const sellerController = require("../controller/seller.auth");
 const buyerController = require("../controller/buyer.auth");
 const hospitalController = require("../controller/hospital.auth");
 const productController = require("../controller/product.add");
+const productSearchController = require("../controller/product.search");
 
 router.get("/", (req, res) => {
   res.send("one jsdbcjsb ");
@@ -49,5 +50,9 @@ router.post("/buyerlogin", buyerController.buyerLogin);
 router.post("/hospitallogin", hospitalController.hospitalLogin);
 
 router.post("/addproduct", productController.addProduct);
+
+router.post("/searchproduct/:name",productSearchController.product_name_search);
+
+router.post("/searchdisease/:name",productSearchController.product_disease_search);
 
 module.exports = router;

@@ -1,6 +1,4 @@
 const Product = require("../model/product");
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
 
 exports.addProduct = async (req, res) => {
   const {
