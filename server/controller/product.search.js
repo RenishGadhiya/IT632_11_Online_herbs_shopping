@@ -35,6 +35,3 @@ exports.product_disease_search=async (req,res)=>
     
 };
 
-
-data2=undefined;
-data2=[];
