@@ -1,0 +1,152 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  color: rgb(116, 105, 105);
+  background-color: rgb(240, 240, 240);
+  margin: 0;
+  padding: 0;
+}
+
+.main-container {
+  max-width: 1200px;
+  height: auto;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 2.7fr 1.3fr;
+}
+
+.section {
+  /* border: 1px solid green; */
+  display: flex;
+  flex-direction: column;
+  max-height: 100vh;
+}
+
+/* ------------------- Product ------------------- */
+
+.section-title {
+  text-align: center;
+  margin-left: 0.3em;
+  margin-right: 0.3em;
+  border-bottom: 2px solid rgb(182, 175, 175);
+}
+
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.product {
+  border: 2.8px solid rgba(0, 0, 0, 0);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0.5em;
+  padding: 0.8em 0.4em;
+  width: 32%;
+}
+
+.product:hover {
+  border: 2.8px solid rgb(182, 175, 175);
+  transition: 0.5s;
+}
+
+.product-name {
+  width: 100%;
+  border-bottom: 2px solid rgb(182, 175, 175);
+  text-align: center;
+}
+
+.product-price::before {
+  content: "$ ";
+}
+
+.product img {
+  height: 120px;
+  width: 120px;
+  object-fit: cover;
+}
+
+.btn {
+  padding: 0.6em 1.1em;
+  font-weight: bold;
+  cursor: pointer;
+  border: 2px solid rgb(85, 85, 85);
+  color: rgb(70, 62, 62);
+}
+
+:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background-color: rgb(182, 175, 175);
+}
+
+.btn-primary:hover {
+  border: 2px solid rgb(180, 149, 99);
+  transition: 0.3s;
+  background: none;
+}
+
+/* ------------------- Cart ------------------- */
+
+.cart {
+  font-style: italic;
+  font-weight: lighter;
+  display: grid;
+}
+
+/* .cart-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px dashed rgb(148, 142, 142);
+} */
+
+.cart-item {
+  display: grid;
+  grid-template-columns: 2em 2em 5em auto 0.2em auto auto;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  border-bottom: 2px dashed rgb(148, 142, 142);
+}
+
+.cart-item-image {
+  width: 50px;
+  height: 50px;
+}
+
+.cart-item-name {
+  font-size: 0.8em;
+}
+
+.cart-item-price::before {
+  content: "₹ ";
+}
+
+.btn-small {
+  padding: 0.2em 0.6em;
+}
+
+.cart-footer {
+  text-align: center;
+}
+
+.cart-footer-total {
+  font-size: 1.2em;
+}
+
+.cart-footer-total::before {
+  content: "Total: ₹ ";
+}

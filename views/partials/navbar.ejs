@@ -1,0 +1,104 @@
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-image: url('herb1.png');">
+    <!-- Container wrapper -->
+    <div class="container-fluid" style="display: flex; ;">
+        <!-- Toggle button -->
+        <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
+            data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
+        <a class="navbar-brand mt-2 mt-lg-0  ms-3" href="/">
+            <img src="/images/logo.png" width="100px" height="100px">
+        </a>
+        <!-- Collapsible wrapper -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent" style="display: flex; justify-content: space-between;">
+            <!-- Navbar brand -->
+           
+            <!-- Left links -->
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="/" style="font-size: 20px;"><b>Home</b></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/home" style="font-size: 20px;" ><b>Admin</b></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/seller/home" style="font-size: 20px;"><b>Seller</b></a>
+                </li>
+              
+            </ul>
+            <!-- Left links -->
+        </div>
+        <!-- Collapsible wrapper -->
+
+        <!-- Right elements -->
+        <div class="d-flex align-items-center">
+            <!-- Icon -->
+            <% if(loginUser){ %>
+                <div class="userName me-3 d-none d-sm-block"><h5 class="">Hello <%= loginUser.username%></h5></div>
+                <% if(loginUser.role != 'Seller' && loginUser.role != 'Admin'){ %>
+                    <a class="text-reset me-3" href="/user/cart/">
+                        <i class="fas fa-shopping-cart" style="font-size: 1.2rem;"></i>
+                        <%let cartLength=0 ;if(loginUser){cartLength=loginUser.cart.length} %> 
+                        <span class="badge rounded-pill badge-notification bg-success"><%=cartLength%></span>
+                    </a>
+                    <%}%>
+            <%}
+            else {%>
+            <a class="text-reset me-3" href="/user/cart/">
+                <i class="fas fa-shopping-cart" style="font-size: 1.2rem;"></i>
+                <%let cartLength=0 ;if(loginUser){cartLength=loginUser.cart.length} %> 
+                <span class="badge rounded-pill badge-notification bg-success"><%=cartLength%></span>
+            </a>
+            <% } %>
+            <!-- Notifications -->
+          
+
+            <!-- Avatar -->
+            <a class="dropdown-toggle d-flex align-items-center hidden-arrow" href="#" id="navbarDropdownMenuLink"
+                role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+        
+              
+               <% var photourl
+               try{
+               photourl=loginUser.photo||`data:image/${loginUser.image.contentType};base64,${loginUser.image.data.toString('base64')}` }
+               catch(e){
+                   photourl=`https://toppng.com/uploads/preview/app-icon-set-login-icon-comments-avatar-icon-11553436380yill0nchdm.png`}%>
+            
+                <img src="<%= photourl%>" class="rounded-circle" height="35" alt="" width="35"
+                    loading="lazy" alt="Not Found"/>
+                
+                  
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+                <% if(loginUser){ %> 
+                    <% if(loginUser.role == 'Customer'){ %> 
+                    <li>
+                        <a class="dropdown-item" href="/user/orders">Your Orders</a>
+                    </li>
+                    <%}%>
+                    <% if(loginUser.role == 'Customer' || loginUser.role == 'Seller'){ %> 
+                        <li>
+                            <a class="dropdown-item" href="/edit/profile">Edit Profile</a>
+                        </li>
+                        <%}%>
+                    <li>
+                        <a class="dropdown-item" href="/logout">Logout</a>
+                    </li>
+                <%}
+                else {%>
+                    <li>
+                        <a class="dropdown-item" href="/register">Register</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="/login">Login</a>
+                    </li>
+                <% } %>
+                </ul>
+            </div>
+            <!-- Right elements -->
+        </div>
+        <!-- Container wrapper -->
+    </nav>
+    <!-- Navbar -->

@@ -1,0 +1,153 @@
+<%- include('../partials/header') %>
+<title>Register</title>
+</head>
+
+<script>
+
+  function myfun() {
+
+  //Name Validation
+    
+  var cw = /^[A-Za-z]+$/;
+    
+    var c = document.getElementById("username").value;
+
+    if(c.match(cw))
+        return true;
+
+    else{
+        document.getElementById("msg_name").innerHTML = "<h6>***Name not allowed</h6>";
+        return false;
+    }
+  }
+
+</script>
+
+
+<script>
+
+  function myfun() {
+
+//password validation
+
+var ps = document.getElementById("password").value;
+    var characters = /^(?=.*\d)(?=.*[a-z])(?=.*[^a-zA-Z0-9])(?!.*\s).{7,15}$/;
+    
+    if(characters.test(ps))
+             return true;
+    else{
+        document.getElementById("msg_pass").innerHTML = "<h6>***Password must contain a special character, a number, an alphabet</h6>";
+        return false;
+    }
+    
+  }
+
+
+</script>
+
+<body>
+<%- include('../partials/navbar') %>
+
+ <main>
+     <% if(register!=""){%>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <%= register %> 
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    <%}%>
+    <div class="container">
+        <h2 class="text-center mt-5">Register Your Account</h2>
+       
+        <div class="form-section d-flex justify-content-center align-items-center my-5" >
+            <form action="/register" method="post" class="register-form needs-validation res-width" enctype="multipart/form-data" onsubmit="return myfun()">
+                <!-- 2 column grid layout with text inputs for the first and last names -->
+                <div class=" mb-4">
+                  <div class="image-port">
+                    <img src="https://toppng.com/uploads/preview/app-icon-set-login-icon-comments-avatar-icon-11553436380yill0nchdm.png" height="90px" width="90px" class="profile-photo m-auto" id="dp-pick">
+                  </div>
+                    <input type="file" class="form-control" name="image" id="files"/>
+                  
+                </div>
+             
+                    <div class="form-outline mb-4">
+                      <input type="text" id="username" class="form-control" name="username" required /><span id="msg_name" style="color: red;"></span>
+                      <label class="form-label" for="username">User Name</label>
+                    </div>
+                    
+                  
+                  
+                
+              
+                <!-- Email input -->
+                <div class="form-outline mb-4">
+                  <input type="email" id="email" class="form-control" name="email" required />
+                  <label class="form-label" for="email">Email address</label>
+                </div>
+              
+                <!-- Password input -->
+                <div class="form-outline mb-4">
+                  <input type="password" id="password" class="form-control" name="password" required/><span id="msg_pass" style="color: red;"></span>
+                  <label class="form-label" for="password">Password</label>
+                </div>
+                <div class="form-outline mb-4">
+                  <input type="text" id="state" class="form-control" name="state"/>
+                  <label class="form-label" for="state">State</label>
+                  </div>
+                <div class="form-outline mb-4">
+                  <input type="text" id="address" class="form-control" name="city"/>
+                  <label class="form-label" for="city">City</label>
+                </div>
+
+                <div class="form-outline mb-4">
+                  <input type="text" id="address" class="form-control" name="address"/>
+                  <label class="form-label" for="address">Address</label>
+                </div>
+
+                <div class="form-outline mb-4">
+                  <input type="text" id="pincode" class="form-control" name="pincode" maxlength="6" minlength="6"/>
+                  <label class="form-label" for="pincode">Pincode</label>
+                </div>
+
+                <div class="form-outline mb-4">
+                  <input type="text" id="contact" class="form-control" name="contact" maxlength="10" minlength="10"/>
+                  <label class="form-label" for="contact">Contact</label>
+                </div>
+                <!-- Checkbox -->
+                <div class="form-outline mb-4">
+                  <label for="role" class="ms-2"><h6>User Role :</h6></label>
+                  <select class="form-select" aria-label="role" name="role">
+                    <option selected value="Customer">Customer</option>
+                    <option value="Seller">Seller</option>
+                  </select>
+               
+                </div>
+                
+              
+                <!-- Submit button -->
+                <button type="submit" class="btn btn-primary btn-block mb-4">Sign up</button>
+              
+                <!-- Register buttons -->
+                <div class="text-center">
+                  <p>Already a registered user? <a href="/login">Click here to Login</a> </p>
+                  <!-- <p>or sign up with:</p>
+                  <a href="/auth/google">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" alt="Google Img" height="50px" width="50px">
+                    </a> -->
+                  
+                </div>
+              </form>
+         </div>
+    </div>
+     
+ </main>
+ <script>
+   
+   document.getElementById('files').onchange = function () {
+     console.log("Hello There")
+  var src = URL.createObjectURL(this.files[0])
+  document.getElementById('dp-pick').src = src
+}
+ </script>
+<%- include('../partials/footer') %> 
+
+

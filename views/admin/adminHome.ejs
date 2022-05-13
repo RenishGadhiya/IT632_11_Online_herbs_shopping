@@ -1,0 +1,52 @@
+<%- include("../partials/header") %>
+
+<title>Admin Home</title>
+</head>
+<body>
+<%- include("../partials/navbar") %> 
+<%- include("../partials/flash") %>
+<main>
+    <div class="container my-3">
+        <h2 class="text-center my-2">Admin Actions</h2>
+        <hr>
+        <div class=" row p-4">
+                
+                <div class=" actions card text-center col-md my-2 p-5">
+                    <div class=" action-item card-body p-3 ">
+                      <a href="/admin/products"><img src="/images/picon.png" style="height: 50px; width: 50px;"></a>
+                      <h5 class="card-title"><a href="/admin/products">Products</a></h5>
+                    </div> 
+                  </div>
+            
+                <div class="actions  card text-center col-md my-2 p-5">
+                    <div class=" action-item card-body">
+                      <a href="/admin/user"><img src="/images/uicon.png" style="height: 50px; width: 50px;"></a>
+                      <h5 class="card-title"><a href="/admin/user">Users</a></h5>
+                    </div> 
+                  </div>
+            
+                <div class=" actions card text-center col-md my-2 p-5">
+                    <div class=" action-item card-body">
+                      <a href="/admin/orders"><img src="/images/oicon.png" style="height: 50px; width: 50px;"></a>
+                      <h5 class="card-title"><a href="/admin/orders">Orders</a></h5>
+                    </div> 
+                  </div>
+                  <div class=" actions card text-center col-md my-2 p-5">
+                    <div class=" action-item card-body">
+                      <a href="/admin/disease"><img src="/images/dicon.png" style="height: 50px; width: 50px;"></a>
+                      <h5 class="card-title"><a href="/admin/disease">Disease</a></h5>
+                    </div> 
+                  </div>
+                  <div class="actions  card text-center col-md my-2 p-5">
+                    <div class=" action-item card-body">
+                      <a href="/admin/addHospital"><img src="/images/hicon.png" style="height: 50px; width: 50px;"></a>
+                      <h5 class="card-title"><a href="/admin/addHospital">Hospital</a></h5>
+                    </div> 
+                  </div>
+            
+            <!-- <div class="action-item col-md m-3 d-flex justify-content-center align-items-center"><a href="/admin/user">Users</a></div>
+            <div class="action-item col-md m-3 d-flex justify-content-center align-items-center"><a href="/admin/orders">Orders</a></div> -->
+        </div>
+    </div>
+</main>
+<%- include("../partials/footer") %>
